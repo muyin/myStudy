@@ -86,13 +86,28 @@ Github是项目代码托管平台，借助git来管理项目代码
         2. 添加远程库地址，并设置别名为origin：`git remote add origin https://github.com/atguigu2018ybup/huashan.git`
         3. 推送本地库到远程库(origin)指定分支(master是主分支)：`git push origin master`
         4. 如果第一次会让你输入用户名和密码
-    - 问题：无法同步或没有权限(the requested URL returned error:403 Forbidden while accessing)
+    - 问题1：无法同步或没有权限(the requested URL returned error:403 Forbidden while accessing)
       答案：私有项目，没有权限，输入用户名密码或者远程地址采用这种类型: vi .git/config 将 
       [remote "origin"] 
         url = https://github.com/用户名/仓库名.git 
       修改为：
       [remote "origin"]
         url = https://用户名:密码@github.com/用户名/仓库名.git
+    - 问题2：文件不同，报错error: failed to push some refs to 'https://github.com/muyin/myStudy.git'。
+        1. 答案1：进行push前先将远程仓库pull到本地仓库，再提交
+            ```
+            git pull origin master      # git pull --rebase origin master
+            git push -u origin master   # git push origin master
+            ```
+        2. 答案2：强制push本地仓库到远程，即以本地库替换远程库 (这种情况不会进行merge, 强制push后远程文件可能会丢失 不建议使用此方法)
+            ```
+                git push -u origin master -f    # git push origin master
+            ```
+        3. 答案3：避开解决冲突, 将本地文件暂时提交到远程新建的分支中
+            ```
+                git branch name      # 创建完branch后, 再进行push
+                git push -u origin name
+            ```
 + 本地团队合作
     - 远程库修改的拉取：`git pull origin master`
     - 拉取合并：pull = fetch + merge
