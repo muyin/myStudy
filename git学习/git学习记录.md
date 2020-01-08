@@ -127,3 +127,9 @@ Github是项目代码托管平台，借助git来管理项目代码
 + 搭建步骤:
     1. 进入项目主页，点击settings
     2. 在settings页面，点击**launch automatic page generator**，选择主题，修改内容，发布即可。
+
+## 9.常见问题
+
+1.  问题：查看git状态(git status)时中文文件名乱码。乱码情况如: \345\233\242\351\230\237\hello.jpg  
+    解决方法：运行git config --global core.quotepath false
+    > core.quotepath设为false就不会对0x80以上的字符进行quote。中文显示正常
