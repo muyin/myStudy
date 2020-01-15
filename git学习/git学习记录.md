@@ -133,3 +133,5 @@ Github是项目代码托管平台，借助git来管理项目代码
 1.  问题：查看git状态(git status)时中文文件名乱码。乱码情况如: \345\233\242\351\230\237\hello.jpg  
     解决方法：运行git config --global core.quotepath false
     > core.quotepath设为false就不会对0x80以上的字符进行quote。中文显示正常
+2.  问题：如何在提交多个项目勒？  
+    解决方法：进入新的本地项目，使用 `git remote -v` 查看本项目的远程地址时为空，此时可使用 `git remote add origin github上项目的地址` 给该本地项目设置一个远程地址，这个设置是放在该本地项目文件夹中的。与其他的项目是分离的。所有不会影响。设置好后，最后使用 `git push origin master` 就可以提交了
