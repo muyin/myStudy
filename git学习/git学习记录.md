@@ -95,8 +95,9 @@ Github是项目代码托管平台，借助git来管理项目代码
         url = https://用户名:密码@github.com/用户名/仓库名.git
     - 问题2：文件不同，报错error: failed to push some refs to 'https://github.com/muyin/myStudy.git'。
         1. 答案1：进行push前先将远程仓库pull到本地仓库，再提交
-            ```
+            ```bash
             git pull origin master      # git pull --rebase origin master
+            # 远程仓库不是一个空仓库，里边有文件，但是那部分文件没有和本地仓库关联，所有我们需要使用一下操作进行关联，如果初四键的是空仓库则没什么问题。使用 "git pull origin master --allow-unrelated-histories"
             git push -u origin master   # git push origin master
             ```
         2. 答案2：强制push本地仓库到远程，即以本地库替换远程库 (这种情况不会进行merge, 强制push后远程文件可能会丢失 不建议使用此方法)
