@@ -281,7 +281,7 @@ Github是项目代码托管平台，借助git来管理项目代码
     git checkout master
     git merge --no-ff release-xxx
     # 对合并生成的新节点，做一个标签
-    git tag -a 1.2
+    git tag -a v1.2
     # 再合并到develop分支
     git checkout develop
     git merge --no-ff release-xxx
@@ -301,7 +301,8 @@ Github是项目代码托管平台，借助git来管理项目代码
     # 删除修补bug分支
     git branch -d hotfix-xxx
 
-    #上面合并命令中的--no-ff的意思是no-fast-forward的缩写,使用该命令可以保持更多的版本演进细节。如果不使用该参数，默认使用了fast-forward进行merge.
+    # 1.上面合并命令中的--no-ff的意思是no-fast-forward的缩写,使用该命令可以保持更多的版本演进细节。如果不使用该参数，默认使用了fast-forward进行merge.
+    # 2.加上-a参数来创建一个带备注的tag，备注信息由-m指定。如果你未传入-m则创建过程系统会自动为你打开编辑器让你填写备注信息。git tag -a tagName -m "备注"
 ```
     
 ## 12.git常用命令
@@ -340,4 +341,28 @@ Github是项目代码托管平台，借助git来管理项目代码
  git push origin  :mybranch # 删除远程分支
 
 ```
-2. 
+## 13.git打tag
+
+通常在发布软件的时候打一个tag,tag会记录版本的commit号，方便后期回溯
+
+```bash
+# 列出已有的tag
+git tag
+# 加上 -l 命令可以使用通配符来过滤tag
+git tag -l "v3.3.*"
+
+# 新建tag。
+# 使用git tag命令跟上tag名字，直接创建一个tag
+git tag v1.0
+# 还可以加上 -a 参数来创建一个带备注的tag,备注信息有 -m 指定。如果你未传入 -m 则系统会自动为你打开编辑器让你填入备注信息
+git tag -a v1.1 -m "my tag 备注"
+# 查看所有的tag，新建的tag也在里边
+git tag
+
+# 查看tag详细信息
+# git show 命令可以查看tag的详细信息，包括commit号等
+git show v1.1
+
+
+```
+
