@@ -366,3 +366,10 @@ git show v1.1
 
 ```
 
+## git常用注意点
+
+1. origin：git为主远程仓库提供的默认名称。
+  > “origin” 并无特殊含义   
+  > 远程仓库名字 “origin” 与分支名字 “master” 一样，在 Git 中并没有任何特别的含义一样。 同时 “master” 是当你运行 git init 时默认的起始分支名字，原因仅仅是它的广泛使用，“origin” 是当你运行 > git clone 时默认的远程仓库名字。 如果你运行 git clone -o booyah，那么你默认的远程分支名字将会是 booyah/master。
+
+2. 
